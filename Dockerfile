@@ -16,7 +16,7 @@ COPY --from=builder /go/src/swift-health-exporter/build/swift-health-exporter /u
 
 ARG SWIFT_HEALTH_EXPORTER_VERSION
 
-LABEL maintainer "nimbolus Team (https://github.com/nimbolus)"
-LABEL org.opencontainers.image.description "swift-health-exporter ($SWIFT_HEALTH_EXPORTER_VERSION) packaged for OpenStack Kolla"
+LABEL maintainer="nimbolus Team (https://github.com/nimbolus)"
+LABEL org.opencontainers.image.description="swift-health-exporter ($SWIFT_HEALTH_EXPORTER_VERSION) packaged for OpenStack Kolla"
 
 EXPOSE 9520/tcp

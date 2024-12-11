@@ -41,7 +41,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64
           build-args: |
             OPENSTACK_BASE_IMAGE=${{ inputs.openstack_base_image }}
             OPENSTACK_BASE_IMAGE_TAG=${{ inputs.openstack_base_image_tag }}

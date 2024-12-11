@@ -17,4 +17,4 @@ podman build -t swift-health-exporter .
 
 Go to [Actions](https://github.com/nimbolus/openstack-kolla-swift-health-exporter/actions/workflows/build.yml) and click on `Run workflow`.
 
-Images are pushed to [quay.io/nimbolus/openstack-kolla-swift-health-exporter](https://quay.io/organization/nimbolus/openstack-kolla-swift-health-exporter).
+Images are pushed to [quay.io/nimbolus/openstack-kolla-swift-health-exporter](https://quay.io/repository/nimbolus/openstack-kolla-swift-health-exporter).

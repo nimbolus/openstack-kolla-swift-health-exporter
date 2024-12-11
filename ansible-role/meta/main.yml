@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  role_name: swift_health_exporter
+  namespace: nimbolus
+  author: lu1as
+  description: Installs swift-health-exporter alongside a OpenStack Kolla deployment
+  company: nimbolus
+  issue_tracker_url: https://github.com/nimbolus/openstack-kolla-swift-health-exporter/issues
+  license: BSD 3-Clause
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Rocky
+      versions: [all]
+  galaxy_tags: []

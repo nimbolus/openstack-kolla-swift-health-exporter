@@ -1,4 +1,4 @@
-# swift-heath-exporter packaged for OpenStack Kolla
+# openstack-kolla-swift-health-exporter
 
 [swift-health-exporter](https://github.com/sapcc/swift-health-exporter) packaged for [OpenStack Kolla](https://docs.openstack.org/kolla/latest/index.html).
 
@@ -6,7 +6,7 @@
 
 ### Development
 
-Prepare image:
+Build image:
 ```sh
 podman build -t swift-health-exporter .
 ```

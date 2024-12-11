@@ -1,0 +1,36 @@
+- name: Ensuring config directory exist
+  ansible.builtin.file:
+    path: "{{ swift_health_exporter_node_config_directory }}/swift-health-exporter"
+    state: directory
+    owner: root
+    group: root
+    mode: "0770"
+
+- name: Copying over config.json file
+  ansible.builtin.template:
+    src: swift-health-exporter.json.j2
+    dest: "{{ swift_health_exporter_node_config_directory }}/swift-health-exporter/config.json"
+    mode: "0660"
+  notify: Restart swift-health-exporter container
+
+- name: Copying over swift.conf file
+  ansible.builtin.copy:
+    src: "{{ swift_health_exporter_node_config_directory }}/swift-proxy-server/swift.conf"
+    remote_src: true
+    dest: "{{ swift_health_exporter_node_config_directory }}/swift-health-exporter/swift.conf"
+    mode: "0660"
+  notify: Restart swift-health-exporter container
+
+- name: Starting container
+  containers.podman.podman_container:
+    name: swift_health_exporter
+    image: "{{ swift_health_exporter_image_full }}"
+    network: host
+    env:
+      KOLLA_CONFIG_STRATEGY: "{{ swift_health_exporter_config_strategy }}"
+    volumes:
+      - "{{ swift_health_exporter_node_config_directory }}/swift/:/var/lib/kolla/swift/:ro"
+      - "{{ swift_health_exporter_node_config_directory }}/swift-health-exporter/:{{ swift_health_exporter_container_config_directory }}/:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    cap_add:
+      - CAP_AUDIT_WRITE

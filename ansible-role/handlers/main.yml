@@ -1,0 +1,12 @@
+- name: Restart swift-health-exporter container
+  containers.podman.podman_container:
+    name: swift_health_exporter
+    restart: true
+    image: "{{ swift_health_exporter_image_full }}"
+    network: host
+    env:
+      KOLLA_CONFIG_STRATEGY: "{{ swift_health_exporter_config_strategy }}"
+    volumes:
+      - "{{ swift_health_exporter_node_config_directory }}/swift/:/var/lib/kolla/swift/:ro"
+      - "{{ swift_health_exporter_node_config_directory }}/swift-health-exporter/:{{ swift_health_exporter_container_config_directory }}/:ro"
+      - "/etc/localtime:/etc/localtime:ro"

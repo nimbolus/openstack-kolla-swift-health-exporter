@@ -1,0 +1,9 @@
+swift_health_exporter_image: quay.io/nimbolus/openstack-kolla-swift-health-exporter
+swift_health_exporter_tag: "{{ swift_tag | default(openstack_tag) | default('2024.1-rocky-9') }}"
+swift_health_exporter_image_full: "{{ swift_health_exporter_image }}:{{ swift_health_exporter_tag }}"
+swift_health_exporter_node_config_directory: "{{ node_config_directory | default('/etc/kolla') }}"
+swift_health_exporter_container_config_directory: "{{ container_config_director | default('/var/lib/kolla/config_files') }}"
+swift_health_exporter_extra_ring_files: "{{ swift_extra_ring_files | default([]) }}"
+swift_health_exporter_listen_host: "{{ api_interface_address | default('0.0.0.0') }}"
+swift_health_exporter_config_strategy: "{{ config_strategy | default('COPY_ALWAYS') }}"
+swift_health_exporter_collectors: []
